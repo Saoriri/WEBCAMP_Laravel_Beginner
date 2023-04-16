@@ -1,7 +1,7 @@
 @extends('layout')
 
 {{-- メインコンテンツ --}}
-@section('contents')
+@section('contets')
         <h1>ログイン</h1>
         @if ($errors->any())
             <div>
@@ -11,6 +11,7 @@
             </div>
         @endif
         <form action="/login" method="post">
+            @csrf
             email：<input name="email" value="{{ old('email') }}"><br>
             パスワード：<input  name="password" type="password"><br>
             <button>ログインする</button>
