@@ -17,13 +17,15 @@ use App\Http\Controllers\TestController;
 |
 */
 
-//　タスク管理システム
-Route::get('/', [AuthController::class,'index']);
-Route::get('/task/list',[TaskController::class,'list']);
+// タスク管理システム
+Route::get('/', [AuthController::class, 'index']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/task/list', [TaskController::class, 'list']);
+
 
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::get('/welcome/second', [WelcomeController::class, 'second']);
-
+// form入力テスト用
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test/input', [TestController::class, 'input']);
