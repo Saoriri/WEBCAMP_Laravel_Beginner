@@ -14,6 +14,25 @@ class TaskController extends Controller
      *
      * @return \Illuminate\View\View
      */
+
+    /**
+     * タスクの詳細閲覧
+     */
+    public function detail($task_id)
+    {
+        // task_idのレコードを取得する
+        $task = TaskModel::find($task_id);
+        if ($task === null) {
+            return redirect('/task/list');
+        }
+        // 本人以外のタスクならNGとする
+        if ($task->user_id !== Auth::id()) {
+            return redirect('/task/list');
+        }
+
+        // テンプレートに「取得したレコード」の情報を渡す
+        return view('task.detail', ['task' => $task]);
+    }
     public function list()
     {
         // 1Page辺りの表示アイテム数を設定
