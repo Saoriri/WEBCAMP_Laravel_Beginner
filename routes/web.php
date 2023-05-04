@@ -5,6 +5,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\CompletedTaskController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -33,8 +34,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{task_id}', [TaskController::class, 'edit'])->whereNumber('task_id')->name('edit');
         Route::put('/edit/{task_id}', [TaskController::class, 'editSave'])->whereNumber('task_id')->name('edit_save');
         Route::delete('/delete/{task_id}', [TaskController::class, 'delete'])->whereNumber('task_id')->name('delete');
-        Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
+        Route::post('/task/list{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
         Route::get('/csv/download', [TaskController::class, 'csvDownload']);
+        Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
+
     });
     //
     Route::get('/logout', [AuthController::class, 'logout']);
