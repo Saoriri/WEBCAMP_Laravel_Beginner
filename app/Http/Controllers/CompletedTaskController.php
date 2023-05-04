@@ -19,7 +19,7 @@ class CompletedTaskController extends Controller
      */
     public function list()
     {
-        $completedTasks = CompletedTaskModel::paginate(10);
-        return view('completed_list', ['list' => $completedTasks]);
+        $completedTasks = CompletedTaskModel::where('user_id', Auth::id())->paginate(10);
+        return view('task.completed_list', ['list' => $completedTasks]);
     }   
 }

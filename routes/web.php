@@ -36,10 +36,10 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/delete/{task_id}', [TaskController::class, 'delete'])->whereNumber('task_id')->name('delete');
         Route::post('/task/list{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
         Route::get('/csv/download', [TaskController::class, 'csvDownload']);
-        Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
-
+        
     });
     //
+    Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
