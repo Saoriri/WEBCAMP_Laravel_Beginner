@@ -3,11 +3,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TaskRegisterPostRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Task as TaskModel;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\CompletedTask as CompletedTaskModel;
 
 class CompletedTaskController extends Controller
@@ -17,7 +13,7 @@ class CompletedTaskController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function list()
+    protected function list()
     {
         $completedTasks = CompletedTaskModel::where('user_id', Auth::id())->paginate(10);
         return view('task.completed_list', ['list' => $completedTasks]);

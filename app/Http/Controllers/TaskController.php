@@ -14,7 +14,7 @@ class TaskController extends Controller
 {
    /**
      * タスク一覧ページ を表示する
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function list()
@@ -216,7 +216,7 @@ var_dump($sql);
         // 一覧に遷移する
         return redirect('/task/list');
     }
-    
+
     /**
      * 一覧用の Illuminate\Database\Eloquent\Builder インスタンスの取得
      */
@@ -280,5 +280,5 @@ var_dump($sql);
         return response($csv_string_sjis)
                 ->header('Content-Type', 'text/csv')
                 ->header('Content-Disposition', 'attachment; filename="' . $download_filename . '"');
-    }    
+    }
 }
