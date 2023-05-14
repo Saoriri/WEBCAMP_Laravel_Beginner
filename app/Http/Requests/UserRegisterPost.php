@@ -4,8 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use App\Models\Task as TaskModel;
-use App\Models\User as UserModel;
 
 class UserRegisterPost extends FormRequest
 {

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterPost;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User as UserModel;
+
 
 class UserController extends Controller
 {
@@ -16,38 +19,22 @@ class UserController extends Controller
     {
         return view('user.register');
     }
-    /**
+   /**
      * ユーザー登録
      * 
      * @return \Illuminate\View\View
      */
-    public function register()
-    {
-        return view('index');
-    }
     
-    public function store(UserRegisterPost $request)
-{
+    public function register(UserRegisterPost $request)
+    {
     // validate済
     // データ取得
     $datum = $request->validated();
     $datum['password'] = Hash::make($datum['password']);
-    
-    // 認証
-    if (Auth::attempt($datum) === false) {
-        return back()
-               ->withInput() // 入力値の保持
-               ->withErrors([
-                   'name' => 'The name field is required.',
-                   'email' => 'The email field is required.',
-                   'password' => 'The password field is required.',
-               ]) // エラーメッセージの出力
-               ;
-    }
+    $user = UserModel::create($datum);
         //
-        $request->session()->regenerate();
-        return redirect()->intended('/task/list');
-
+        $request->session()->flash('user_registered', true);
+        return redirect()->intended('/');
     }
     
 }

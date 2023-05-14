@@ -45,7 +45,6 @@ Route::middleware(['auth'])->group(function () {
     });
     //
     Route::get('/completed_tasks/list', [CompletedTaskController::class, 'list']);
-    Route::post('/user/register', [UserController::class, 'register']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
