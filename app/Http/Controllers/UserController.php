@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRegisterPost;
+use App\Http\Requests\UserRegisterPostRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User as UserModel;
 
@@ -25,7 +25,7 @@ class UserController extends Controller
      * @return \Illuminate\View\View
      */
     
-    public function register(UserRegisterPost $request)
+    public function register(UserRegisterPostRequest $request)
     {
     // validate済
     // データ取得
