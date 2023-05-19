@@ -32,7 +32,7 @@ class TaskController extends Controller
      */
     public function list()
     {
-        // 1Page辺りの表示アイテム数を設定
+        // 1Page辺りの表示アイテム数を設定(20)
         $per_page = 20;
 
         // 一覧の取得
